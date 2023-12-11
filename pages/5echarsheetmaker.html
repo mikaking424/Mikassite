@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D&D Character Sheet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>D&D Character Sheet</h1>
+  <form id="characterForm">
+    <label for="charName">Character Name</label>
+    <input type="text" id="charName" name="charName" required>
+
+    <label for="charClass">Class</label>
+    <select id="charClass" name="charClass" required>
+      <option value="" disabled selected>Select a class</option>
+      <option value="barbarian">Barbarian</option>
+      <option value="bard">Bard</option>
+      <option value="cleric">Cleric</option>
+      <option value="druid">Druid</option>
+      <option value="fighter">Fighter</option>
+      <option value="monk">Monk</option>
+      <option value="paladin">Paladin</option>
+      <option value="ranger">Ranger</option>
+      <option value="rogue">Rogue</option>
+      <option value="sorcerer">Sorcerer</option>
+      <option value="warlock">Warlock</option>
+      <option value="wizard">Wizard</option>
+    </select>
+
+    <!-- Important stat -->
+    <label for="charLevel">Level</label>
+    <input type="number" id="charLevel" name="charLevel" required onchange="updateProficiency()">
+
+    <label for="proficiencyBonus">Proficiency Bonus</label>
+    <input type="number" id="proficiencyBonus" name="proficiencyBonus" required readonly>
+
+<!-- Main stats -->
+<h2>Primary Stats and Saving Throws</h2>
+
+<label for="charisma">Charisma</label>
+<select id="charisma" name="charisma">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+</select>
+
+<label for="constitution">Constitution</label>
+<select id="constitution" name="constitution">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+</select>
+
+<label for="dexterity">Dexterity</label>
+<select id="dexterity" name="dexterity">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+</select>
+
+<label for="intelligence">Intelligence</label>
+<select id="intelligence" name="intelligence">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+</select>
+
+<label for="wisdom">Wisdom</label>
+<select id="wisdom" name="wisdom">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+  <option value="17">17</option>
+  <option value="18">18</option>
+  <option value="19">19</option>
+  <option value="20">20</option>
+  <option value="21">21</option>
+  <option value="22">22</option>
+  <option value="23">23</option>
+  <option value="24">24</option>
+</select>
+
+    <!-- Skills Section -->
+    <h2>Skills</h2>
+    <label for="athletics">Athletics</label>
+    <input type="number" id="athletics" name="athletics">
+
+    <label for="deception">Deception</label>
+    <input type="number" id="deception" name="deception">
+
+    <label for="history">History</label>
+    <input type="number" id="history" name="history">
+
+    <label for="insight">Insight</label>
+    <input type="number" id="insight" name="insight">
+
+    <label for="intimidation">Intimidation</label>
+    <input type="number" id="intimidation" name="intimidation">
+
+    <label for="investigation">Investigation</label>
+    <input type="number" id="investigation" name="investigation">
+
+    <label for="medicine">Medicine</label>
+    <input type="number" id="medicine" name="medicine">
+
+    <label for="nature">Nature</label>
+    <input type="number" id="nature" name="nature">
+
+    <label for="perception">Perception</label>
+    <input type="number" id="perception" name="perception">
+
+    <label for="performance">Performance</label>
+    <input type="number" id="performance" name="performance">
+
+    <label for="persuasion">Persuasion</label>
+    <input type="number" id="persuasion" name="persuasion">
+
+    <label for="religion">Religion</label>
+    <input type="number" id="religion" name="religion">
+
+    <label for="sleightOfHand">Sleight of Hand</label>
+    <input type="number" id="sleightOfHand" name="sleightOfHand">
+
+    <label for="stealth">Stealth</label>
+    <input type="number" id="stealth" name="stealth">
+
+    <label for="survival">Survival</label>
+    <input type="number" id="survival" name="survival">
+
+    <!-- Add more skills as needed -->
+
+    <!-- End Skills Section -->
+
+    <!-- Add more fields as needed -->
+
+    <button type="button" onclick="generateHTML()">Generate HTML</button>
+  </form>
+
+  <script>
+    function updateProficiency() {
+      const charLevel = document.getElementById('charLevel').value;
+      let proficiencyBonus = 2; // Default value for levels 1-4
+
+      if (charLevel >= 5 && charLevel <= 8) {
+        proficiencyBonus = 3;
+      } else if (charLevel >= 9 && charLevel <= 12) {
+        proficiencyBonus = 4;
+      } else if (charLevel >= 13 && charLevel <= 16) {
+        proficiencyBonus = 5;
+      } else if (charLevel >= 17) {
+        proficiencyBonus = 6;
+      }
+
+      document.getElementById('proficiencyBonus').value = proficiencyBonus;
+    }
+
+    function generateHTML() {
+	  console.log('Button clicked!');
+      const charName = document.getElementById('charName').value;
+      const charClass = document.getElementById('charClass').value;
+      const charLevel = document.getElementById('charLevel').value;
+      const proficiencyBonus = document.getElementById('proficiencyBonus').value;
+
+      // Primary stats
+      const charisma = document.getElementById('charisma').value;
+      const constitution = document.getElementById('constitution').value;
+      const dexterity = document.getElementById('dexterity').value;
+      const intelligence = document.getElementById('intelligence').value;
+      const wisdom = document.getElementById('wisdom').value;
+
+      // Skills
+      const athletics = document.getElementById('athletics').value;
+      const deception = document.getElementById('deception').value;
+      const history = document.getElementById('history').value;
+      const insight = document.getElementById('insight').value;
+      const intimidation = document.getElementById('intimidation').value;
+      const investigation = document.getElementById('investigation').value;
+      const medicine = document.getElementById('medicine').value;
+      const nature = document.getElementById('nature').value;
+      const perception = document.getElementById('perception').value;
+      const performance = document.getElementById('performance').value;
+      const persuasion = document.getElementById('persuasion').value;
+      const religion = document.getElementById('religion').value;
+      const sleightOfHand = document.getElementById('sleightOfHand').value;
+      const stealth = document.getElementById('stealth').value;
+      const survival = document.getElementById('survival').value;
+
+      const htmlContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${charName}'s Character Sheet</title>
+</head>
+<body>
+  <h1>${charName}'s Character Sheet</h1>
+  <p><strong>Class:</strong> ${charClass}</p>
+  <p><strong>Level:</strong> ${charLevel}</p>
+  <p><strong>Proficiency Bonus:</strong> +${proficiencyBonus}</p>
+
+  <!-- Skills Section -->
+  <h2>Skills</h2>
+  <p><strong>Athletics:</strong> ${athletics}</p>
+  <p><strong>Deception:</strong> ${deception}</p>
+  <p><strong>History:</strong> ${history}</p>
+  <p><strong>Insight:</strong> ${insight}</p>
+  <p><strong>Intimidation:</strong> ${intimidation}</p>
+  <p><strong>Investigation:</strong> ${investigation}</p>
+  <p><strong>Medicine:</strong> ${medicine}</p>
+  <p><strong>Nature:</strong> ${nature}</p>
+  <p><strong>Perception:</strong> ${perception}</p>
+  <p><strong>Performance:</strong> ${performance}</p>
+  <p><strong>Persuasion:</strong> ${persuasion}</p>
+  <p><strong>Religion:</strong> ${religion}</p>
+  <p><strong>Sleight of Hand:</strong> ${sleightOfHand}</p>
+  <p><strong>Stealth:</strong> ${stealth}</p>
+  <p><strong>Survival:</strong> ${survival}</p>
+  <!-- Add more skills as needed -->
+
+  <!-- End Skills Section -->
+
+  <!-- Add more fields as needed -->
+</body>
+</html>`;
+
+      // Create a Blob (Binary Large Object) and create a link to trigger the download
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+	  const url = URL.createObjectURL(blob);
+	  const link = document.createElement('a');
+	  link.href = url;
+ 	  link.download = `${charName}_Character_Sheet.html`;
+	  link.click();
+	  URL.revokeObjectURL(url); // Clean up the object URL
+
+    }
+  </script>
+</body>
+</html>
